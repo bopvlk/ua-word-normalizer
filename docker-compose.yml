@@ -1,0 +1,18 @@
+version: '3.8'
+   
+services:
+  scrap-servise:
+    build: ./
+    command: ./scrap-servise
+    depends_on:
+      - redis
+    ports:
+      - 1207:1207
+      
+  redis:
+    restart: always
+    image: redis:alpine
+    ports:
+      - 6379:6379
+    command: redis-server --requirepass verysecretpassword
+
